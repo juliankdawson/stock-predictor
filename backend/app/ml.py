@@ -85,8 +85,16 @@ def run_pipeline(ticker: str):
         predictions
     )
 
+    # Take the last 30 predictions
+    latest_preds = predictions.tail(30)
+
+    # Convert for JSON
+    latest_predictions = {
+        k.strftime("%Y-%m-%d"): int(v) for k, v in latest_preds.items()
+    }
+
     return {
         "ticker": ticker,
         "precision": round(precision, 3),
-        "latest_predictions": predictions.tail(30).to_dict()
+        "latest_predictions": latest_predictions
     }
