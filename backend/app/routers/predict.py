@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException
-from ml import run_pipeline
+from app.ml import run_pipeline
 
 router = APIRouter()
 
